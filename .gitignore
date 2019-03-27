@@ -60,3 +60,4 @@ Sampledata
 .metadata/
 .sonarlint/
 consul-data/
+*.exe
