@@ -1,0 +1,62 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/TickerGenieWeb/dist
+/TickerGenieWeb/tmp
+/TickerGenieWeb/out-tsc
+
+# dependencies
+/TickerGenieWeb/node_modules
+
+# profiling files
+/TickerGenieWeb/chrome-profiler-events.json
+/TickerGenieWeb/speed-measure-plugin.json
+
+# IDEs and editors
+/TickerGenieWeb/.idea
+/TickerGenieWeb/.project
+/TickerGenieWeb/.classpath
+/TickerGenieWeb/.c9/
+/TickerGenieWeb/*.launch
+/TickerGenieWeb/.settings/
+/TickerGenieWeb/*.sublime-workspace
+
+# IDE - VSCode
+/TickerGenieWeb/.vscode/*
+/TickerGenieWeb/!.vscode/settings.json
+/TickerGenieWeb/!.vscode/tasks.json
+/TickerGenieWeb/!.vscode/launch.json
+/TickerGenieWeb/!.vscode/extensions.json
+/TickerGenieWeb/.history/*
+
+# misc
+/TickerGenieWeb/.sass-cache
+/TickerGenieWeb/connect.lock
+/TickerGenieWeb/coverage
+/TickerGenieWeb/libpeerconnection.log
+/TickerGenieWeb/npm-debug.log
+/TickerGenieWeb/yarn-error.log
+/TickerGenieWeb/testem.log
+/TickerGenieWeb/typings
+
+# System Files
+/TickerGenieWeb/.DS_Store
+/TickerGenieWeb/Thumbs.db
+
+
+# For Spring Projects
+/TickerFetchService/target/
+/TickerFetchService/.settings/
+/TickerFetchService/.classpath
+/TickerFetchService/.project
+
+/QuandlFetchService/target/
+/QuandlFetchService/.settings/
+/QuandlFetchService/.classpath
+/QuandlFetchService/.project
+
+#Main
+Sampledata
+.metadata/
+.sonarlint/
+consul-data/

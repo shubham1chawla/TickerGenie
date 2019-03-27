@@ -1,0 +1,29 @@
+<div>
+
+    <table class="ticker-arena">
+      <tr>
+        <th>S.No</th>
+        <th>Ticker's Name</th>
+        <th>Security Code</th>
+      </tr>
+
+      <tr *ngFor="let ticker of tickers; index as i; odd as o" [class.odd-row]="o"> 
+        
+        <div *ngIf="(i===showInfo); then infoBlock; else rowBlock"></div>
+
+        <ng-template #rowBlock>
+          <td (click)="openInfo(i)">{{i+1}}</td>
+          <td (click)="openInfo(i)">{{ticker.name}}</td>
+          <td (click)="openInfo(i)">{{ticker.code | slice: 3}}</td>
+        </ng-template>
+
+        <ng-template #infoBlock>
+            <td colspan="3" class="info-cell">
+              <app-ticker-info [tickerInfo]="ticker" (closeEvent)="closeInfoTab()"></app-ticker-info>
+            </td>
+        </ng-template>
+
+      </tr>
+
+    </table>
+  </div>

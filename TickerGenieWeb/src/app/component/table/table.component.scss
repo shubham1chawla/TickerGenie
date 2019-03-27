@@ -1,0 +1,34 @@
+@import '../../../styles.scss';
+
+div{
+    width: 100%;
+
+    .ticker-arena {
+        position: relative;
+        width: 100%;
+        border-collapse: collapse;
+        font-family: get-fonts(normal);
+
+        tr {
+            cursor: pointer;
+
+            height: 30px;
+            th {
+                background-color: #bdc3c7;
+                height: 50px;
+            }
+            td {
+                padding: 20px;
+            }
+        }
+
+        .odd-row {
+            background-color: lighten($color: #bdc3c7, $amount: 20);
+        }
+
+        .info-cell {
+            cursor: default;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+        }
+    }
+}

@@ -1,0 +1,77 @@
+<nav>
+    <div class="logo-holder"><i class="fas fa-bars ham-burger" (click)="toggleSidebar()"></i>Ticker Genie</div>
+</nav>
+
+<main [class.not-hidden-side-bar-state]="!hideSidebar">
+
+  <section class="side-bar" *ngIf="!hideSidebar">
+
+    <div class="user-area">
+
+      <div class='user-pic'></div>
+      <div class='user-info'>
+        <div class='user-info-name'>{{userInfo.username}}</div>
+        <div class='user-info-email'>{{userInfo.email}}</div>
+        <div class='user-logout-btn'><button (click)="triggerLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button></div>
+      </div>
+      
+    </div>
+
+    <hr>
+    <div class="toggler-heading" (click)="toggleView()">
+      <div><i class="fas fa-fire"></i> Show Heatmap</div>
+      <div *ngIf="isTable(); then toggleoff; else toggleon"></div>
+      <ng-template #toggleoff>
+        <i class="fas fa-toggle-off"></i>
+      </ng-template>
+      <ng-template #toggleon>
+          <i class="fas fa-toggle-on"></i>
+      </ng-template>
+    </div>
+    <hr>
+    <form class="search-form" (submit)="searchFormHandler($event)">
+      <span class="search-form-heading"><i class="fas fa-search"></i> Smart Search</span>
+      <br>
+      <div class="search-inputs">
+        <input type="text" name="search_query" placeholder="Enter Security name or code">
+        <input type="submit" value="Search">
+      </div>
+    </form>
+    <hr>
+    <form class="search-form" (submit)="refineFormHandler($event)">
+        <span class="search-form-heading"><i class="fas fa-cog"></i> Refine Search</span>
+        <br>
+        <div class="refine-inputs">
+          <input type="number" name="start" placeholder="Starting Index">
+          <input type="number" name="count" placeholder="Total Count">
+        </div>
+        <input type="submit" value="Refine" style="width: 100%">
+    </form>
+    <hr>
+
+  </section>
+
+  <section class="ticker-arena-wrapper">
+
+    <div *ngIf = "isLoading(); then beforeLoad; else afterLoad;"></div>
+
+    <ng-template #beforeLoad>
+      <div [ngClass]="{'error-screen': isAppServerDown(), 'loading-screen': !isAppServerDown()}"></div>
+    </ng-template>
+
+    <ng-template #afterLoad>
+
+      <div *ngIf = "isTable(); then table; else map"></div>
+      
+      <ng-template #table>
+        <app-table [tickers]="tickers" [showInfo]="showInfo" (childEvent)="showInfo=$event"></app-table>
+      </ng-template>
+  
+      <ng-template #map>
+        <app-treemap [alphamap]="alphamap" (childEvent)="heatmapClickHandler($event)"></app-treemap>
+      </ng-template>
+
+    </ng-template>
+
+  </section>
+</main>

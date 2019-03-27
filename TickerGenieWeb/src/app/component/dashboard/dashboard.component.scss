@@ -1,0 +1,199 @@
+@import "../../../styles.scss";
+
+html body {
+    margin: 0px;
+    padding: 0px;
+}
+
+$nav-height: 10vh;
+$section-padding: 1vh;
+$userPicSize: 100px;
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    margin: 0px;
+    height: $nav-height;
+    width: 100%;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    background: white url('../../../assets/images/nav-bg.jpg');
+    background-size: 50% auto;
+    background-position: 50vw;
+    background-repeat: no-repeat;
+
+    .ham-burger {
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    
+    .logo-holder {
+        padding: 20px;
+        font-family: get-fonts(normal);
+        text-transform: uppercase;
+        font-size: 1.2rem;
+    }
+
+}
+
+main {
+    position: relative;
+    top: $nav-height*1.125;
+    width: 100%;
+
+    .ticker-arena-wrapper {
+        position: relative;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        height: 100vh - $nav-height*1.25 -2*$section-padding;
+        padding: $section-padding;
+        overflow: scroll;
+
+        .loading-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url('../../../assets/images/infinity.gif');
+            background-size: 100px 100px;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .error-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: white url('../../../assets/images/error.gif');
+            background-size: auto 100px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-blend-mode: darken;
+        }
+
+    }
+
+    .side-bar {
+        position: relative;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        height: 100vh - $nav-height*1.25 -2*$section-padding;
+        padding: $section-padding;
+        overflow: scroll;
+
+        @media screen and (orientation: portrait) {
+            position: absolute;
+            width: 80vw;
+            background-color: white;
+            z-index: 10;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .user-area {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: $userPicSize auto;
+            column-gap: 10px;
+
+            .user-pic {
+                background: url('../../../assets/images/user.png');
+                background-size: 100px 100px;
+                background-position: center center;
+                height: $userPicSize;
+            }
+
+            .user-info {
+                height: 100%;
+
+                .user-info-name {
+                    position: relative;
+                    font-family: get-fonts(normal);
+                    font-weight: 600;
+                    font-size: 1.5rem;
+                }
+
+                .user-info-email {
+                    position: relative;
+                    font-family: get-fonts(normal);
+                    font-size: 0.8rem;
+                }
+
+                .user-logout-btn {
+                    position: relative;
+                    margin-top: 10px;   
+                    cursor: pointer;
+                }
+
+            }
+        }
+
+        .toggler-heading {
+            font-family: get-fonts(bold);
+            font-size: 1.2rem;
+            padding: 10px;
+            text-transform: uppercase;
+            display: grid;
+            grid-template-columns: 80% auto;
+            column-gap: 10px;
+
+            .fa-toggle-off {
+                font-size: 1.5rem;
+                color: #c0392b;
+                cursor: pointer;
+            }
+            
+            .fa-toggle-on {
+                font-size: 1.5rem;
+                color: #27ae60;
+                cursor: pointer;
+            }
+        }
+
+        .search-form {
+            padding: 10px;
+            width: auto;
+
+            .search-form-heading {
+                font-family: get-fonts(bold);
+                font-size: 1.2rem;
+                text-transform: uppercase;
+            }
+
+            .search-inputs {
+                display: grid;
+                grid-template-columns: 70% auto;
+                column-gap: 5px;
+            }
+
+            .refine-inputs {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                column-gap: 5px;
+            }
+        }
+
+        button {
+            padding: 10px;
+            background-color: #c0392b;
+            color: white;
+            font-family: get-fonts(bold);
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #e74c3c;
+        }
+    }
+
+}
+
+.not-hidden-side-bar-state {
+    display: grid;
+    grid-template-columns: 30% auto;
+    column-gap: $section-padding;
+
+    @media screen and (orientation: portrait) {
+        grid-template-columns: auto;
+    }
+}

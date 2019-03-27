@@ -1,0 +1,87 @@
+<div>
+  
+  <header>
+    <div>
+      <span class="ticker-name">{{tickerInfo.name}}</span><br>
+      <span class="ticker-code">BSE Security Code: {{tickerInfo.code | slice: 3}}</span>
+    </div>
+    <div class="close-icon" (click)="closeInfo()"><i class="fas fa-window-close"></i></div>
+  </header>
+  
+  <hr>
+  
+  <main>
+    
+    <section class="ticker-information-section">
+      
+      <div *ngIf = "showInfo; then infoScreen; else loadingScreen"></div>
+      
+      <ng-template #loadingScreen>
+        <div class="loading-screen"></div>
+      </ng-template>
+      
+      <ng-template #infoScreen>
+
+        <div *ngIf="!isError(); then okInfoBlock; else errorBlock"></div>
+
+        <ng-template #okInfoBlock>
+          <div class="info-arena">  
+            <div>
+              Close: <strong>{{tickerQuandlInfo["close"]}}</strong>
+            </div>
+            <div>
+              Open: <strong>{{tickerQuandlInfo["open"]}}</strong>
+            </div>
+            <div>
+              High: <strong>{{tickerQuandlInfo["high"]}}</strong>
+            </div>
+            <div>
+              Low: <strong>{{tickerQuandlInfo["low"]}}</strong>
+            </div>
+            <div>
+              WAP: <strong>{{tickerQuandlInfo["wap"]}}</strong>
+            </div>
+            <div>
+              Total Turnover: <strong>{{tickerQuandlInfo["totalTurnover"]}}</strong>
+            </div>
+            <div>
+              No. of Shares: <strong>{{tickerQuandlInfo["noOfShares"]}}</strong>
+            </div>
+            <div>
+              No. of Trades: <strong>{{tickerQuandlInfo["noOfTrades"]}}</strong>
+            </div>
+            <div>
+              Spread H-L: <strong>{{tickerQuandlInfo["spreadHighLow"]}}</strong>
+            </div>
+            <div>
+              Spread C-O: <strong>{{tickerQuandlInfo["spreadCloseOpen"]}}</strong>
+            </div>
+            <div>
+              Deliverable Quantity: <strong>{{tickerQuandlInfo["deliverableQuantity"]}}</strong>
+            </div>
+            <div>
+              % Deli. Qty to Traded Qty: <strong>{{tickerQuandlInfo["perDelQuanToTrade"]}}</strong>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="date-info">
+            Last Updated: {{tickerQuandlInfo["date"] | date: 'short'}}
+          </div>
+
+        </ng-template>
+
+        <ng-template #errorBlock>
+          <div style="width:100%; text-align:center;color:#e74c3c;">
+            <span><i class="fas fa-exclamation-circle"></i> {{printErrorMessage()}}</span>
+          </div>
+        </ng-template>
+
+      </ng-template>
+      
+    </section>
+    
+  </main>
+  
+</div>

@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Oxygen');
+
+$normal: 'Oxygen', sans-serif;
+$bold: 'Fjalla One', sans-serif;
+
+$fonts: (
+    normal: $normal,
+    bold: $bold
+);
+
+@function get-fonts($val) {
+    @return map-get($map: $fonts, $key: $val)
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+html body {
+    margin: 0px;
+    padding: 0px;
+}
+
+input {
+	padding: 10px;
+	border-radius: 5px;
+	border: 0px solid #c0392b;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    transition: all 200ms ease-in-out;
+    box-sizing: border-box;
+}
+
+input:focus {
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+	outline: none;
+}
+
+input[type=submit] {
+	background-color: #16a085;
+    color: white;
+    box-sizing: border-box;
+}
+
+input[type=submit]:hover {
+	background-color: #1abc9c;
+	color: white;
+}
+
+hr {
+	border: 1px solid black;
+}
