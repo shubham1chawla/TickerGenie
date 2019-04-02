@@ -14,8 +14,7 @@ This project aimed to have a view for different stock tickers registered on Bomb
 - Start the Consul agent by opening terminal/cmd in the main folder and running this script.
 `consul agent -server -bootstrap-expect=1 -data-dir=consul-data -ui -bind=<ENTER YOUR IP>` (You could refer this [link](https://howtodoinjava.com/spring-cloud/consul-service-registration-discovery/).)
 - Once you have started the consul service, import `TickerFetchService` and `QuandlFetchService` on your Eclipse or Intellij workspace and let them resolve `pom` for dependencies.
-- **Important** Inside `QuandlFetchService` project go to `application.properties` and enter your Quandl API key.
-- Once both the projects are up and running, make sure you go to your [localhost:8500](http://localhost:8500/ui/dc1/services) and check both services are registered on consul successfully.
+- **Important** Open Consul web ui by navigating to [localhost:8500](http://localhost:8500/ui/dc1/kv) and make a key value pair for quandl api key. (Create new key as `config/quandl-fetch-service/quandl_api_key` and paste your key. Refer to [this](https://blog.imaginea.com/integrate-consul-with-spring-boot-2-0-5-release/).)
 - After registering both the services, set up the angular project `TickerGenieWeb` in the main project by first installing the node modules.
 - Build `TickerGenieWeb` using `ng serve` and navigate to [localhost:4200](http://localhost:4200/login). You will be greeted with a login page. Use username as *shubham* and password as *1234*.
 - If you are logged in succesfully, You have succesfully setup the project.
