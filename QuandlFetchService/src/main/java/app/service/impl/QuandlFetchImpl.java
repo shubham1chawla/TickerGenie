@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 import app.dto.InfoDTO;
@@ -12,10 +13,19 @@ import app.util.HttpUtils;
 import app.util.QuandlUtils;
 import app.util.TickerErrors;
 
+/*
+ * Note: @RefreshScope annotation is used in the above class, 
+ * which will say that, if there any changes in the consul then
+ * it will immediately refresh the values in the application without restarting. 
+ * If you havent use @RefreshScope then you need to manually 
+ * restart the system to apply your config changes
+ */
+
 @Service
+@RefreshScope
 public class QuandlFetchImpl implements QuandlFetch {
 	
-	@Value("${config.quandl.api.key}")
+	@Value("${quandl_api_key}")
 	private String QUANDL_API_KEY;
 	
 	private final String METHOD = "GET";
@@ -34,7 +44,7 @@ public class QuandlFetchImpl implements QuandlFetch {
 		return data;
 	}
 	
-	private String buildQuandlApiUrl(String code) {
+	private String buildQuandlApiUrl(String code) {	
 		StringBuilder sb = new StringBuilder();
 		sb.append("https://www.quandl.com/api/v3/datasets/BSE/");
 		sb.append(code);
