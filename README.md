@@ -4,6 +4,9 @@ This project aimed to have a view for different stock tickers registered on Bomb
 ## Video Presentation
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=lUSrEZ18VEk" target="_blank"><img src="http://img.youtube.com/vi/lUSrEZ18VEk/0.jpg" alt="IMAGE ALT TEXT HERE" width="320" height="240" border="10" /></a>
 
+## Workkflow
+![workflow](https://user-images.githubusercontent.com/31181262/55422669-cbdb1280-5599-11e9-9350-fd283dffd9d8.png)
+
 ## How to use
 - Download zip or clone the repository in any desired folder.
 - Download Consul Agent from [here](https://www.consul.io/downloads.html).
